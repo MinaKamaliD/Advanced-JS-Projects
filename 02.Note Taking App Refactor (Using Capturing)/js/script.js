@@ -4,6 +4,12 @@ let saveBtn = document.getElementById("btn-save");
 let deleteBtn = document.getElementById("btn-delete");
 let noteList = document.getElementById("listed");
 
+noteList.addEventListener("click", function (event) {
+  if (event.target.tagName === "P") {
+    event.target.parentElement.remove();
+  }
+});
+
 function createNote() {
   if (input.value) {
     let noteP = document.createElement("p");
@@ -15,10 +21,6 @@ function createNote() {
     noteDiv.append(noteP);
     noteDiv.style.backgroundColor = input.style.backgroundColor;
     noteList.append(noteDiv);
-
-    noteDiv.addEventListener("click", function () {
-      noteDiv.remove();
-    });
 
     input.value = "";
     input.style.backgroundColor = "#FFF";
